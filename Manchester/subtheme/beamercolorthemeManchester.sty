@@ -1,0 +1,59 @@
+\ProvidesPackage{beamercolorthemeManchester}[2015/04/21]
+
+\RequirePackage{xcolor}
+
+\mode<presentation>
+
+\definecolor{ManchesterPurple}{rgb}{0.388235294, 0.137254902, 0.564705882}
+\definecolor{ManchesterYellow}{rgb}{0.992156863, 0.823529412, 0.019607843}
+\definecolor{ManchesterGrey}{rgb}{0.584313725, 0.584313725, 0.592156863}
+
+\definecolor{WHITE}{rgb}{     1.000, 1.000, 1.000 }
+\definecolor{BLACK}{rgb}{     0.000, 0.000, 0.000 }
+\definecolor{GRAY}{rgb}{      0.400, 0.400, 0.400 }
+\definecolor{RED}{rgb}{       0.824, 0.137, 0.196 }
+\definecolor{BLUE}{rgb}{      0.325, 0.408, 0.878 }
+\definecolor{GREEN}{rgb}{     0.200, 0.600, 0.200 }
+\definecolor{ORANGE}{rgb}{    1.000, 0.500, 0.000 }
+\definecolor{MAUVE}{rgb}{     0.769, 0.000, 0.682 }
+\definecolor{BROWN}{rgb}{     0.588, 0.294, 0.000 }
+\definecolor{TURQUOISE}{rgb}{ 0.000, 0.535, 0.582 }
+\definecolor{YELLOW}{rgb}{    1.000, 0.773, 0.005 }
+
+\setbeamercolor*{palette primary}{use=structure,fg=ManchesterPurple,bg=WHITE}
+\setbeamercolor*{palette secondary}{use=structure,fg=WHITE,bg=ManchesterPurple}
+\setbeamercolor*{palette tertiary}{use=structure,fg=WHITE,bg=structure.fg!50!BLACK}
+\setbeamercolor*{palette quaternary}{fg=WHITE,bg=BLACK}
+
+\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
+\setbeamercolor*{palette sidebar secondary}{fg=WHITE}
+\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=structure.fg!50}
+\setbeamercolor*{palette sidebar quaternary}{fg=WHITE}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+%\setbeamercolor*{titlelike}{parent=structure}% comment out to add crossbar
+
+% Global/figure titles, bullet points
+\setbeamercolor{structure}{fg=ManchesterPurple}
+\setbeamertemplate{enumerate items}[square]
+\setbeamerfont*{itemize/enumerate subbody}{parent=itemize/enumerate body}
+\setbeamerfont*{itemize/enumerate subsubbody}{parent=itemize/enumerate body}
+
+% Normal blocks
+\setbeamercolor{normal text}{fg=BLACK,bg=WHITE}
+\setbeamercolor{block title}{use=structure,fg=WHITE,bg=ManchesterGrey}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+
+% Alert blocks
+\setbeamercolor{alerted text}{fg=ManchesterPurple,bg=WHITE}
+\setbeamercolor{block title alerted}{use=alerted text,fg=WHITE,bg=alerted text.fg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+
+% Example blocks
+\setbeamercolor{example text}{fg=ManchesterYellow,bg=WHITE}
+\setbeamercolor{block title example}{use=example text,fg=ManchesterPurple!50!BLACK,bg=example text.fg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+\mode
+<all>

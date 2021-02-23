@@ -1,0 +1,79 @@
+\ProvidesPackage{beamerthemeManchester}[2012/04/30]
+
+\RequirePackage{appendixnumberbeamer}
+\RequirePackage{booktabs}
+\RequirePackage{grffile}
+\RequirePackage{hepshortcuts}
+\RequirePackage[labelformat=empty]{subfig}
+
+\def\ManchesterVersion{2.0}
+
+\newif\if@doSectionTitles
+\@doSectionTitlestrue
+\DeclareOption{noSectionTitles}{\@doSectionTitlesfalse}
+\ProcessOptions
+
+\DeclareOptionBeamer{backgroundimage}{
+  \PassOptionsToPackage{backgroundimage=#1}{beamerouterthemeManchester}
+}
+\ProcessOptionsBeamer
+
+% Now load the subthemes:
+\mode<presentation>
+
+\useinnertheme[shadow=true,slidescentered]{rounded}
+\useoutertheme{Manchester}
+\usecolortheme{Manchester}
+
+\newenvironment{changemargin}[2]{%
+  \begin{list}{}{%
+    \setlength{\topsep}{0pt}%
+    \setlength{\leftmargin}{#1}%
+    \setlength{\rightmargin}{#2}%
+    \setlength{\listparindent}{\parindent}%
+    \setlength{\itemindent}{\parindent}%
+    \setlength{\parsep}{\parskip}%
+  }%
+  \item[]%
+}{%
+  \end{list}
+}%
+
+\newenvironment{widefigure}{%
+  \begin{changemargin}{-3cm}{-3cm}%
+  \begin{figure}%
+  \item[]%
+}{%
+  \end{figure}%
+  \end{changemargin}%
+}%
+
+% Figure widths
+\newlength{\triplefigwidth}%
+\setlength{\triplefigwidth}{0.32\textwidth}%
+\newlength{\widetriplefigwidth}%
+\setlength{\widetriplefigwidth}{0.39\textwidth}%
+\newlength{\doublefigwidth}%
+\setlength{\doublefigwidth}{0.47\textwidth}%
+\newlength{\widedoublefigwidth}%
+\setlength{\widedoublefigwidth}{0.54\textwidth}%
+\newlength{\singlefigwidth}%
+\setlength{\singlefigwidth}{0.61\textwidth}%
+\newlength{\widesinglefigwidth}%
+\setlength{\widesinglefigwidth}{0.7\textwidth}%
+
+% Column widths
+\newlength{\narrowcolumn}%
+\setlength{\narrowcolumn}{0.36\textwidth}%
+\newlength{\widecolumn}%
+\setlength{\widecolumn}{0.58\textwidth}%
+\newlength{\normalcolumn}%
+\setlength{\normalcolumn}{0.47\textwidth}%
+
+% Add section titles
+\if@doSectionTitles
+\AtBeginSection{\frame{\sectionpage}}
+\fi
+
+\mode
+<all>

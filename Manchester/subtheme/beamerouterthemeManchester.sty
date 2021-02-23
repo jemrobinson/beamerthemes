@@ -1,0 +1,167 @@
+\ProvidesPackage{beamerouterthemeManchester}[2012/04/30]
+
+%% Get background image
+\def\titlebackgroundimage{}
+\DeclareOptionBeamer{backgroundimage}{\def\titlebackgroundimage{#1}}
+\ProcessOptionsBeamer
+
+% Set xelatex font support
+\RequirePackage{fontspec} % Use Latin Modern by default
+% \defaultfontfeatures{Ligatures=TeX}
+% \RequirePackage{xltxtra}  % Font fixes
+
+% Drawing includes
+\RequirePackage[absolute,overlay]{textpos}
+\RequirePackage{tikz}
+\RequirePackage{eso-pic}
+
+\mode<presentation>
+
+% Set beamer colours
+\setbeamercolor{text in header}{parent=palette primary}%
+\setbeamercolor{text in footer}{parent=palette secondary}%
+\setbeamercolor{section in head/foot}{parent=palette quaternary}%
+\setbeamercolor{subsection in head/foot}{parent=palette primary}%
+\setbeamercolor{author in head/foot}{parent=section in head/foot}%
+\setbeamercolor{title in head/foot}{parent=subsection in head/foot}%
+
+% Set beamer fonts
+\usefonttheme[onlymath]{serif}
+\setsansfont{Cabin} % Font used in main body
+\setbeamerfont{frametitle}{family=\fontspec{Copperplate}}
+\setbeamerfont{section title}{family=\fontspec{Futura}}
+\setbeamerfont{subheader}{family=\fontspec{Rockwell}}
+% Set font sizes
+\setbeamerfont{section title}{size=\Huge}
+\setbeamerfont{section in head/foot}{size=\tiny}
+\setbeamerfont{title}{size=\Huge}
+\setbeamerfont{author}{size=\Large}
+\setbeamerfont{institute}{size=\normalsize}
+\setbeamerfont{date}{size=\large}
+
+% Turn off beamer defaults
+\setbeamertemplate{caption}[numbered]    % numbered captions
+\setbeamertemplate{navigation symbols}{} % no navigation symbols
+\setbeamertemplate{table}[numbered]      % numbered tables
+
+% Define reference box
+\newcommand{\notebox}[2][2.6cm]{%
+  \begin{textblock*}{#1}[1.0,0.0](0.97\paperwidth,0.0\paperheight)%
+    \begin{alertblock}{}%
+      {\tiny #2}%
+    \end{alertblock}%
+  \end{textblock*}%
+}%
+
+% Define tikx outlinebox
+\newcommand\outlinebox[2][]{%
+  \tikz[overlay]\node[thick, inner sep=2pt, anchor=text, rectangle, rounded corners=1mm,#1] {#2};\phantom{#2}%
+}%
+
+% Set subheader style
+\newcommand\subheader[1]{%
+  \par\bigskip%
+  \begin{beamercolorbox}{part title}%
+    {\usebeamerfont{subheader}\large#1}%
+  \end{beamercolorbox}%
+  \par\smallskip%
+}
+
+% Set background to transparent
+\setbeamercolor{background canvas}{bg=}
+
+% Specify title page
+\setbeamertemplate{title page}{
+  \ifx\titlebackgroundimage\empty%
+  \else
+    \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{\titlebackgroundimage}}
+  \fi
+  \begin{center}
+    % Title
+    \begin{beamercolorbox}[wd=\paperwidth,sep=8pt,center]{title}
+      {\usebeamercolor[fg]{title}\usebeamerfont{title}\inserttitle}
+    \end{beamercolorbox}
+    % Author and institute
+    \ifx\insertauthor\@empty
+    \else
+      \vskip8ex
+      {\usebeamercolor[fg]{author}\usebeamerfont{author}\insertauthor}
+      \ifx\insertinstitute\@empty
+      \else
+        \vskip2ex
+        {\usebeamercolor[fg]{institute}\usebeamerfont{institute}\insertinstitute}
+      \fi
+    \fi
+    \vskip8ex
+    % Date and conference
+    \ifx\insertsubtitle\@empty
+    \else
+      {\usebeamercolor[fg]{date}\usebeamerfont{date}\insertsubtitle}
+    \fi
+    \quad
+    \ifx\insertdate\@empty
+    \else
+      {\usebeamercolor[fg]{date}\usebeamerfont{date}\insertdate}
+    \fi
+  \end{center}
+  \vfill
+}
+
+% Section pages
+\setbeamertemplate{section page}{%
+  \begin{beamercolorbox}[center]{part title}%
+    \usebeamerfont{section title}\insertsection\par%
+  \end{beamercolorbox}%
+}%
+
+% Header with title line
+\defbeamertemplate*{headline}{split theme} {%
+  \@tempdimb=10.0ex%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\@tempdimb]{text in header}%
+    \begin{beamercolorbox}[wd=4.0\@tempdimb]{text in header}%
+    \hbox{%
+      \vbox to\@tempdimb{\vfil \hbox to 0.1\@tempdimb{} \vfil}%
+      \vbox to\@tempdimb{\vfil \vbox to 0.1\@tempdimb{} \includegraphics[height=1.5\@tempdimb]{TAB_col_white_background} \vfil}%
+    }%
+    \end{beamercolorbox}%
+  \end{beamercolorbox}%
+}%
+
+% Frame title in header
+\setbeamertemplate{frametitle}{%
+  \@tempdimb=5.0ex%
+  \vskip-\@tempdimb%
+  \vbox to \@tempdimb{%
+    \leftskip=3.0\@tempdimb% Skip to allow space for logo
+    \begin{beamercolorbox}[wd=0.73\paperwidth,ht=\@tempdimb]{text in header}% Main colour box containing text
+      \vbox to \@tempdimb{%
+        \vfil%
+        {\usebeamerfont{frametitle}{\insertframetitle\\{\small\insertframesubtitle}}\par}%
+        \vfil%
+      }%
+    \end{beamercolorbox}%
+  }%
+  \vskip 0.7\@tempdimb% Push body further away from title
+}%
+
+% Footer with text
+\defbeamertemplate*{footline}{split theme} {%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.0ex,leftskip=.3cm plus1fil,rightskip=.3cm]{text in footer}%
+    \ifx\insertsection\empty%
+      \usebeamerfont{text in footer}\insertshorttitle  % Use title if not in a section
+    \else%
+      \usebeamerfont{text in footer}\insertsection     % Otherwise use section name
+    \fi%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.0ex,leftskip=.3cm,rightskip=.3cm plus1fil]{text in footer}%
+    \usebeamerfont{text in footer}\insertshortauthor%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.0ex,leftskip=.3cm,rightskip=.3cm]{text in footer}%
+    \usebeamerfont{text in footer}\insertframenumber/\inserttotalframenumber%
+  \end{beamercolorbox}%
+  }%
+}%
+
+\mode
+<all>
