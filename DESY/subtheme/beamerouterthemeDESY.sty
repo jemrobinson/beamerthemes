@@ -1,0 +1,154 @@
+% LaTeX-Beamer Template DESY
+% version 2.0
+% based upon DESY beamer theme at http://bib-pubdb1.desy.de/record/171471/
+\ProvidesPackage{beamerouterthemeDESY}[2015/04/21]
+\RequirePackage{textcase}
+
+%% Get background image
+\def\titlebackgroundimage{}
+\DeclareOptionBeamer{backgroundimage}{\def\titlebackgroundimage{#1}}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+% Customize beamer defaults
+\setbeamertemplate{blocks}[rounded][shadow=true] % rounded blocks with shadows
+\setbeamertemplate{navigation symbols}{}         % no navigation symbols
+\setbeamertemplate{table}[numbered]              % numbered tables
+\setbeamercolor{background canvas}{bg=}          % set background to transparent
+
+
+% Headline is a blue background
+\setbeamertemplate{headline}%
+{%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=0.1\paperheight]{header}%
+  \end{beamercolorbox}%
+}%
+
+
+% Draw frame title over headline
+\setbeamertemplate{frametitle}%
+{%
+  \nointerlineskip
+  \vskip-0.1\paperheight% height of headline
+  \begin{beamercolorbox}[wd=\paperwidth, sep=2mm]{frametitle}
+      \strut\insertframetitle\strut
+      \hfill
+      \parbox[c]{0.35\paperwidth}{\usebeamerfont{framesubtitle}\setlength\lineskip{1pt}\raggedleft\insertframesubtitle}
+  \end{beamercolorbox}
+}%
+
+
+% Title slide
+\def\maketitle{%
+  \begin{frame}[plain]%
+    \vskip-\headheight%
+    \vbox{}%
+    \titlepage%
+    \vfill%
+  \end{frame}%
+  \addtocounter{framenumber}{-1}
+}%
+
+
+% Specify title page
+\setbeamertemplate{title page}{
+  % Add background image if requested
+  \ifx\titlebackgroundimage\empty%
+  \else
+    \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{\titlebackgroundimage}}
+  \fi
+  % Title
+  \begin{beamercolorbox}[wd=\paperwidth,sep=2ex,ht=16ex,left]{title}%
+    {\usebeamerfont{title}{%
+      \expandafter\MakeTextUppercase\expandafter{\inserttitle}%
+      {\usebeamercolor[fg]{subtitle}{\LARGE .}}%
+    }}%
+  \end{beamercolorbox}%
+  % Subtitle
+  \ifx\insertsubtitle\@empty%
+  \else%
+    \begin{beamercolorbox}[wd=\paperwidth,sep=2ex,left]{subtitle}%
+      {\usebeamercolor{subtitle}\usebeamerfont{subtitle}\insertsubtitle}%
+    \end{beamercolorbox}%
+  \fi
+  % Author and institute
+  \ifx\insertauthor\@empty
+  \else
+    \begin{beamercolorbox}[wd=\paperwidth,sep=20pt,center]{author}%
+      {\usebeamercolor[fg]{author}\usebeamerfont{author}\insertauthor}
+    \end{beamercolorbox}%
+    \vskip-2ex
+    \ifx\insertinstitute\@empty
+    \else
+      \begin{beamercolorbox}[wd=\paperwidth,sep=20pt,center]{institute}%
+        {\usebeamercolor[fg]{institute}\usebeamerfont{institute}\insertinstitute}
+      \end{beamercolorbox}%
+    \fi
+  \fi
+  % Date and location
+  \ifx\insertdate\@empty
+  \else
+    \begin{beamercolorbox}[wd=\paperwidth,sep=20pt,center]{date}%
+      {\usebeamercolor{date}\usebeamerfont{date}\insertdate}
+    \end{beamercolorbox}%
+  \fi
+  \vskip 4ex
+  % Add logos
+  \hspace*{-8mm}%
+  \includegraphics[height=0.12\paperheight]{logo_HG_black}%
+  \hspace*{\fill}%
+  \hbox{\hspace*{-5mm}\includegraphics[height=0.12\paperheight]{logo_ATLAS}}%
+  \hspace*{\fill}%
+  \includegraphics[height=0.15\paperheight]{logo_DESY}%
+  \hspace*{-8mm}%
+}
+
+
+% Footline without background
+\setbeamertemplate{footline}
+{%
+  \leavevmode%
+  \hfill%
+  \hbox{%
+    \begin{beamercolorbox}[wd=0.9\paperwidth,ht=2.5ex,right]{text in head/foot}%
+      % Author
+      {\usebeamerfont*{author in head/foot}{\textbf\insertshortauthor}}%
+      \phantom{i}|\phantom{i}%
+      % Title
+      \mbox{%
+        \ifx\insertsection\empty%
+          \insertshorttitle%    Use title if not in a section
+        \else%
+          \ifx\insertsectionhead\empty%
+            \insertsection%     otherwise use full section name...
+          \else%
+            \insertsectionhead% ... unless a short one is available
+          \fi%
+        \fi%
+      }%
+      \phantom{i}|\phantom{i}%
+      % Date
+      \insertshortdate%
+      \phantom{i}|\phantom{i}%
+      % Slide number
+      {\usebeamerfont*{author in head/foot}{Page \insertframenumber/\inserttotalframenumber}}%
+      \hspace*{1em}%
+      \raisebox{-3.5ex}{\includegraphics[height=0.1\paperheight]{logo_DESY}}%
+      \hspace*{1em}%
+    \end{beamercolorbox}%
+  }%
+  \vspace*{1mm}
+  \vskip0pt%
+}
+
+% Section pages
+\setbeamertemplate{section page}{%
+  \begin{beamercolorbox}[center]{section title}%
+    \usebeamerfont{section title}\uppercase{\insertsection}%
+  \end{beamercolorbox}%
+  \addtocounter{framenumber}{-1}
+}%
+
+\mode
+<all>

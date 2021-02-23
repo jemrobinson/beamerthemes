@@ -1,0 +1,68 @@
+% LaTeX-Beamer Template DESY
+% version 2.0
+% based upon DESY beamer theme at http://bib-pubdb1.desy.de/record/171471/
+\ProvidesPackage{beamerfontthemeDESY}[2015/04/21]
+
+% Set xelatex font support
+\RequirePackage[no-math]{fontspec} % uses Latin Modern by default
+
+\mode<presentation>
+
+\setmainfont{Cabin}       % font used in main body
+\setsansfont{Cabin}       % sans-serif font
+
+% Default definitions
+\setbeamerfont{normal text}{}
+\setbeamerfont{alerted text}{}
+\setbeamerfont{example text}{}
+\setbeamercolor{emphasized text}{}
+
+% Structured components
+\setbeamerfont{structure}{}
+\setbeamerfont{tiny structure}{size=\tiny}
+\setbeamerfont{text in head/foot}{parent={tiny structure}}
+
+% Titles
+\setbeamerfont{title}{size=\Large,parent=structure,family=\fontspec{Helvetica},series=\bf}
+\setbeamerfont{title in head/foot}{}
+
+% Subtitles
+\setbeamerfont{subtitle}{size=\normalsize,parent=title,family=\fontspec{Helvetica},series=\bf}
+
+% Frame
+\setbeamerfont{frametitle}{size=\Large,parent=titlelike,series=\bf}
+\setbeamerfont{framesubtitle}{parent=frametitle,size=\tiny}
+
+% Authors
+\setbeamerfont{author}{size=\small}
+\setbeamerfont{author in head/foot}{series=\bf}
+
+% Dates
+\setbeamerfont{date}{size=\normalsize}
+
+% Institutes
+\setbeamerfont{institute}{size=\scriptsize}
+
+% Section
+\setbeamerfont{section title}{size=\Large,parent=titlelike,family=\fontspec{Copperplate},series=\bf}
+
+% Quotations
+\setbeamerfont{verse}{family=\rmfamily,shape=\itshape}
+\setbeamerfont{quotation}{shape=\itshape}
+\setbeamerfont{quote}{parent=quotation}
+
+% Blocks
+\setbeamerfont{block body}{}
+\setbeamerfont{block body alerted}{}
+\setbeamerfont{block body example}{}
+\setbeamerfont{block title}{size=\large,parent={structure,block body}}
+\setbeamerfont{block title alerted}{parent={block title,alerted text}}
+\setbeamerfont{block title example}{parent={block title,example text}}
+
+% Set math-mode font
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage[defaultmathsizes]{mathastext}
+\renewcommand{\familydefault}{\rmdefault}
+
+\mode
+<all>

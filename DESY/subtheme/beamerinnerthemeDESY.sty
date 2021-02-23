@@ -1,0 +1,35 @@
+% LaTeX-Beamer Template DESY
+% version 2.0
+% based upon DESY beamer theme at http://bib-pubdb1.desy.de/record/171471/
+\ProvidesPackage{beamerinnerthemeDESY}[2015/04/21]
+\RequirePackage{tikz}
+
+\mode<presentation>
+
+% Define margins
+\setlength\leftmargini{2.75ex}
+\setlength\leftmarginii{2.75ex}
+\setlength\leftmarginiii{2.75ex}
+\setbeamersize{sidebar width left=0mm}
+
+% Set \and separator
+\def\beamer@andinst{,~}
+
+% Itemize symbols, DESY
+\defbeamertemplate*{itemize item}{DESY}{\usebeamercolor[fg]{item}\hbox{\textbf{>}}}
+\defbeamertemplate*{itemize subitem}{DESY}{\TINY\usebeamercolor[fg]{subitem}\raise1ex\hbox{\vrule width 1ex height 1ex}\hskip1.5ex}
+\defbeamertemplate*{itemize subsubitem}{DESY}{\TINY\usebeamercolor[fg]{subitem}\raise1ex\hbox{\vrule width 1ex height 1ex}\hskip1.5ex}
+
+% Enumerate symbols, DESY
+\setbeamertemplate{enumerate items}[square]
+
+% Define tikx outlinebox
+\newcommand\outlinebox[2][]{%
+  \tikz[overlay]\node[thick, inner sep=2pt, anchor=text, rectangle, rounded corners=1mm,#1] {#2};\phantom{#2}%
+}%
+
+% Remove 'Figure' from captions
+\setbeamertemplate{caption}{\raggedright\insertcaption\par}
+
+\mode
+<all>

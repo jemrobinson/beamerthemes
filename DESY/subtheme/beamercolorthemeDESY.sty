@@ -1,0 +1,51 @@
+% LaTeX-Beamer Template DESY
+% version 2.0
+% based upon DESY beamer theme at http://bib-pubdb1.desy.de/record/171471/
+\ProvidesPackage{beamercolorthemeDESY}[2015/04/21]
+
+\RequirePackage{xcolor}
+
+\mode<presentation>
+
+% DESY colours
+\definecolor{desycyan}{rgb}{0.00,0.65,0.92}%
+\definecolor{desyorange}{rgb}{0.95,0.55,0.00}%
+\definecolor{desygray}{rgb}{0.47,0.47,0.47}%
+
+% Set general text colours
+\setbeamercolor{normal text}{fg=black,bg=white}%
+\setbeamercolor{example text}{fg=desycyan}%
+\setbeamercolor{alerted text}{fg=desyorange}%
+\setbeamercolor{emphasized text}{fg=desygray}%
+
+% Title page colours
+\setbeamercolor{title}{fg=white, bg=desycyan}
+\setbeamercolor{subtitle}{fg=desyorange, bg=white}
+\setbeamercolor{date}{fg=desyorange, bg=white}
+\setbeamercolor{author}{fg=desycyan, bg=white}
+
+% Set header colours
+\setbeamercolor{header}{fg=white,bg=desycyan}
+\setbeamercolor{frametitle}{fg=white}
+\setbeamercolor{framesubtitle}{fg=white}
+
+% Set footer colours
+\setbeamercolor{text in head/foot}{fg=desygray}
+
+% Set bullet points
+\setbeamercolor{item}{fg=desyorange, bg=white}
+\setbeamercolor{subitem}{fg=desygray, bg=white}
+
+% Set other structured components
+\setbeamercolor{section title}{fg=desycyan, bg=white}
+
+% Block colours
+\setbeamercolor{block title}{use=structure,fg=white,bg=desygray}
+\setbeamercolor{block title alerted}{use=alerted text,fg=white,bg=alerted text.fg}
+\setbeamercolor{block title example}{use=example text,fg=white,bg=example text.fg}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!20!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!20!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!20!bg}
+
+\mode<all>

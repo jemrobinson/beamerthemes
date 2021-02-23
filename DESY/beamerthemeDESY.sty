@@ -1,0 +1,35 @@
+% LaTeX-Beamer Template DESY
+% version 2.0
+% based upon DESY beamer theme at http://bib-pubdb1.desy.de/record/171471/
+\ProvidesPackage{beamerthemeDESY}[2016/09/05]
+
+\RequirePackage{appendixnumberbeamer}
+\RequirePackage{booktabs}
+\RequirePackage[labelformat=empty,caption=false]{subfig}
+
+\def\DESYVersion{3.0}
+
+\newif\if@doSectionTitles
+\@doSectionTitlestrue
+\DeclareOption{noSectionTitles}{\@doSectionTitlesfalse}
+\ProcessOptions
+
+\DeclareOptionBeamer{backgroundimage}{
+  \PassOptionsToPackage{backgroundimage=#1}{beamerouterthemeDESY}
+}
+\ProcessOptionsBeamer
+
+\mode<presentation>
+
+% Now load the subthemes:
+\usecolortheme{DESY}
+\usefonttheme{DESY}
+\useinnertheme{DESY}
+\useoutertheme{DESY}
+
+% Add section titles
+\if@doSectionTitles
+\AtBeginSection{\frame[plain]{\sectionpage}}
+\fi
+
+\mode<all>
