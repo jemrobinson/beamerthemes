@@ -1,0 +1,70 @@
+\ProvidesPackage{beamercolorthemeUCL}[2009/12/11]
+
+\mode<presentation>
+
+\definecolor{UCLDarkPurple}{rgb}{0.3203125, 0.2578125, 0.35546875}
+\definecolor{UCLDarkRed}{rgb}{0.3515625, 0.10546875, 0.19140625}
+\definecolor{UCLDarkBlue}{rgb}{0, 0.26171875, 0.34765625}
+\definecolor{UCLDarkGreen}{rgb}{0.29296875, 0.2734375, 0.125}
+\definecolor{UCLDarkBrown}{rgb}{0.328125, 0.1875, 0.1015625}
+\definecolor{UCLBlack}{rgb}{0, 0, 0}
+\definecolor{UCLRichRed}{rgb}{0.92578125, 0.08984375, 0.30859375}
+\definecolor{UCLMidRed}{rgb}{0.76171875, 0.2265625, 0.17578125}
+\definecolor{UCLNavyBlue}{rgb}{0, 0.26953125, 0.484375}
+\definecolor{UCLMidGreen}{rgb}{0.5078125, 0.55078125, 0.21484375}
+\definecolor{UCLDarkGrey}{rgb}{0.62890625, 0.58203125, 0.53515625}
+\definecolor{UCLWhite}{rgb}{1, 1, 1}
+\definecolor{UCLPink}{rgb}{0.566406, 0.09375, 0.324219}
+\definecolor{UCLOrange}{rgb}{0.83984375, 0.48046875, 0.13671875}
+\definecolor{UCLBrightBlue}{rgb}{0.26953125, 0.609375, 0.73828125}
+\definecolor{UCLBrightGreen}{rgb}{0.796875, 0.81640625, 0.34375}
+\definecolor{UCLLightGrey}{rgb}{0.7890625, 0.7578125, 0.71875}
+\definecolor{UCLLightPurple}{rgb}{0.74609375, 0.68359375, 0.734375}
+\definecolor{UCLYellow}{rgb}{0.89453125, 0.68359375, 0}
+\definecolor{UCLLightBlue}{rgb}{0.65625, 0.75, 0.81640625}
+\definecolor{UCLLightGreen}{rgb}{0.72265625, 0.75390625, 0.57421875}
+\definecolor{UCLStone}{rgb}{0.84765625, 0.8359375, 0.796875}
+
+\definecolor{DarkBlue}{rgb}{0, 0.03125, 0.24609375}
+\definecolor{LightBlue}{rgb}{0.59375, 0.6484375, 0.78515625}
+\definecolor{LightOrange}{rgb}{0.9140625, 0.6328125, 0.3359375}
+\definecolor{MidOrange}{rgb}{0.8671875, 0.38671875, 0.08203125}
+\definecolor{DarkOrange}{rgb}{0.8671875, 0.23828125, 0.03515625}
+
+\definecolor{EmphRed}{rgb}{0.85, 0, 0}
+\definecolor{EmphGreen}{rgb}{0, 0.5, 0}
+\definecolor{EmphBlue}{rgb}{0, 0, 0.85}
+
+\setbeamercolor{structure}{fg=UCLNavyBlue}
+
+\setbeamercolor{normal text}{fg=UCLBlack,bg=UCLWhite}
+\setbeamercolor{alerted text}{fg=EmphRed}
+\setbeamercolor{example text}{fg=EmphGreen}
+
+\setbeamercolor*{palette primary}{use=structure,fg=UCLWhite,bg=UCLDarkPurple}
+\setbeamercolor*{palette secondary}{use=structure,fg=UCLWhite,bg=structure.fg!75!UCLBlack}
+\setbeamercolor*{palette tertiary}{use=structure,fg=UCLWhite,bg=structure.fg!50!UCLBlack}
+\setbeamercolor*{palette quaternary}{fg=UCLWhite,bg=UCLBlack}
+
+\setbeamercolor*{sidebar}{use=structure,bg=structure.fg}
+  
+\setbeamercolor*{palette sidebar primary}{use=structure,fg=structure.fg!10}
+\setbeamercolor*{palette sidebar secondary}{fg=UCLWhite}
+\setbeamercolor*{palette sidebar tertiary}{use=structure,fg=structure.fg!50}
+\setbeamercolor*{palette sidebar quaternary}{fg=UCLWhite}
+
+\setbeamercolor*{titlelike}{parent=palette primary}
+
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+
+\setbeamercolor{block title}{use=structure,fg=UCLWhite,bg=UCLDarkPurple}
+\setbeamercolor{block title alerted}{use=alerted text,fg=UCLWhite,bg=alerted text.fg!75!UCLBlack}
+\setbeamercolor{block title example}{use=example text,fg=UCLWhite,bg=example text.fg!75!UCLBlack}
+
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!10!bg}
+\setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!10!bg}
+
+\mode
+<all>

@@ -1,0 +1,32 @@
+\ProvidesPackage{beamerthemeUCL}[2009/12/11]
+
+\RequirePackage{hepshortcuts}
+\RequirePackage[labelformat=empty]{subfig}
+\RequirePackage{booktabs}
+\RequirePackage{grffile}
+
+\def\UCLVersion{2.0}
+
+\mode<presentation>
+
+\useinnertheme[shadow=true,slidescentered]{rounded}
+\useoutertheme{UCL}
+\usecolortheme{UCL}
+
+\newenvironment{changemargin}[2]{
+  \begin{list}{}{
+    \setlength{\topsep}{0pt}
+    \setlength{\leftmargin}{#1}
+    \setlength{\rightmargin}{#2}
+    \setlength{\listparindent}{\parindent}
+    \setlength{\itemindent}{\parindent}
+    \setlength{\parsep}{\parskip}
+  }
+  \item[]
+}{\end{list}}
+
+\setbeamerfont{block title}{size={}}
+\setbeamercolor*{titlelike}{parent=structure} %comment out to add crossbar
+
+\mode
+<all>

@@ -1,0 +1,110 @@
+\ProvidesPackage{beamerouterthemeUCL}[2009/12/11]
+
+\mode<presentation>
+
+\setbeamercolor{section in head/foot}{parent=palette quaternary}
+\setbeamercolor{subsection in head/foot}{parent=palette primary}
+
+\setbeamercolor{author in head/foot}{parent=section in head/foot}
+\setbeamercolor{title in head/foot}{parent=subsection in head/foot}
+
+\setbeamerfont{section in head/foot}{size=\tiny}
+
+\setbeamertemplate{frametitle}{{\bf
+  \begin{centering}
+  \insertframetitle
+  \par
+  \end{centering}
+}}
+
+%\let\@oldinsertsectionnavigation\insertsectionnavigation
+%\def\insertsectionnavigation#1{%
+%  \hbox to #1{%
+%    \vbox{{\usebeamerfont{section in head/foot}\usebeamercolor[fg]{section in head/foot}%
+%     \vskip0.5625ex%
+%     \def\slideentry##1##2##3##4##5##6{}%
+%     \def\sectionentry##1##2##3##4##5{%
+%       \ifnum##5=\c@part%
+%       \def\insertsectionhead{##2}%
+%       \def\insertsectionheadnumber{##1}%
+%       \def\insertpartheadnumber{##5}%
+%       \setbox\beamer@tempbox=\hbox{%
+%         \hyperlink{Navigation##3}{\hbox to #1{%
+%             \hskip0.3cm%
+%             \ifnum\c@section=##1%
+%               {\usebeamertemplate{section in head/foot}}%
+%             \else%
+%               {\usebeamertemplate{section in head/foot shaded}}%
+%             \fi\hskip0.3cm}}}%
+%       \ht\beamer@tempbox=1.6875ex\dp\beamer@tempbox=0.75ex%
+%       \box\beamer@tempbox\fi}%
+%     \dohead\vskip0.5625ex}}\hfil}}
+
+%\def\insertsubsectionnavigation#1{%
+%  \hbox to #1{%
+%    \vbox{{%
+%      \usebeamerfont{subsection in head/foot}\usebeamercolor[fg]{subsection in head/foot}%
+%      \vskip0.5625ex%
+%      \beamer@currentsubsection=0%
+%      \def\sectionentry##1##2##3##4##5{}%
+%      \def\slideentry##1##2##3##4##5##6{\ifnum##6=\c@part\ifnum##1=\c@section%
+%        \ifnum##2>\beamer@currentsubsection%
+%        \beamer@currentsubsection=##2%
+%        \def\insertsubsectionhead{##5}%
+%        \def\insertsectionheadnumber{##1}%
+%        \def\insertsubsectionheadnumber{##2}%
+%        \def\insertpartheadnumber{##6}%
+%        \setbox\beamer@tempbox=\hbox{\beamer@link(##4){%
+%            \hbox to #1{\hskip0.3cm%
+%              \ifnum\c@subsection=##2%
+%                {\usebeamertemplate{subsection in head/foot}}%
+%              \else%
+%                {\usebeamertemplate{subsection in head/foot shaded}}%
+%              \fi\hfil\hskip0.3cm}}}%
+%        \ht\beamer@tempbox=1.6875ex\dp\beamer@tempbox=0.75ex%
+%        \box\beamer@tempbox\fi\fi\fi}%
+%      \dohead\vskip0.5625ex}\hfil}}}
+
+
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{navigation symbols}{}
+
+\usesectionheadtemplate
+  {\hfill\insertsectionhead}
+  {\hfill\color{fg!50!bg}\insertsectionhead}
+
+\defbeamertemplate*{headline}{split theme} {
+  \@tempdimb=10.0ex%
+  \begin{beamercolorbox}[wd=\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+    \vbox to\@tempdimb{\vfil\insertsectionnavigation{.38\paperwidth}\vfil}%
+    \vbox to\@tempdimb{\vfil\insertsubsectionnavigation{.38\paperwidth}\vfil}%
+    \vbox to\@tempdimb{\vfil\includegraphics[height=1.01\@tempdimb]{UCL_logo_white}}%
+  \end{beamercolorbox}%
+%  \@tempdimb=13.0ex%
+%  \begin{beamercolorbox}[wd=\paperwidth,ht=\@tempdimb]{subsection in head/foot}%
+%    \vbox to\@tempdimb{\vfil \hbox to.35\paperwidth{\hfil\insertsection\hfil} \vfil}%
+%    \vbox to\@tempdimb{\vfil\insertsubsectionnavigation{.35\paperwidth}\vfil}%
+%    \vbox to\@tempdimb{\includegraphics[height=\@tempdimb]{logos.white.sm.eps}}%
+%  \end{beamercolorbox}%
+}
+
+\defbeamertemplate*{footline}{split theme} {
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.5ex,dp=1.0ex,leftskip=.3cm plus1fil,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{title in head/foot}\insertshorttitle%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.4\paperwidth,ht=2.5ex,dp=1.0ex,leftskip=.3cm,rightskip=.3cm plus1fil]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor%
+  \end{beamercolorbox}%
+  %\begin{beamercolorbox}[wd=.57\paperwidth,ht=2.5ex,dp=1.0ex,leftskip=.1cm,rightskip=.1cm]{author in head/foot}%
+  %  \raisebox{-1.0ex}{\usebeamertemplate***{navigation symbols}}
+  %\end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.1\paperwidth,ht=2.5ex,dp=1.0ex,leftskip=.3cm,rightskip=.3cm]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertframenumber/\inserttotalframenumber%
+  \end{beamercolorbox}%
+  }%
+}
+
+\mode
+<all>
+
